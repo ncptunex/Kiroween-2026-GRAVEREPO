@@ -207,7 +207,7 @@ No GitHub analysis beyond this spec is added before the checkpoint (D26).
 8. THE data layer SHALL NOT cache a repository list that is marked as partial.
 9. THE data layer SHALL cache a list that is truncated at the repository cap, because the cap is applied on purpose.
 10. THE data layer SHALL store a schema version with each cache entry, and IF an entry has a different schema version or cannot be read, THEN THE data layer SHALL delete it and treat it as missing.
-11. IF writing to browser storage fails, THEN THE data layer SHALL remove all GRAVEREPO entries from browser storage and continue with an in-memory cache for the rest of the session.
+11. IF writing to browser storage fails, THEN THE data layer SHALL remove only the GitHub cache entries (keys that start with `graverepo:`) from browser storage and continue with an in-memory cache for the rest of the session. THE data layer SHALL NOT read, modify or remove ritual progress entries, which use the separate `graverepo-progress:` prefix.
 12. WHEN two identical requests are made at the same time, THE data layer SHALL send only one network request and give both callers the same result.
 13. WHEN a caller cancels a request that is shared with another caller, THE data layer SHALL stop delivering the result to the cancelling caller only, and SHALL NOT abort the shared network request.
 14. (Phase 2) THE proxy SHALL send shared-cache headers so that Vercel's CDN can reuse responses for the same freshness windows.
@@ -359,7 +359,7 @@ All decisions are approved. "Deferred" means approved but not part of the MVP.
 | D18 | Fixture layout | Separate `captured/` and `constructed/` folders, with metadata for captured fixtures |
 | D19 | Leaner detail requests | Core first, one merged issues request, skip the recent-authors request when the latest commit is outside the activity window |
 | D20 | Proxy timing | Option B. Proxy deferred until the core app and demo work. It may start only if all eight checkpoint checks (D29) pass at the end of Saturday 28 November 2026, Malaysia time. It must be deployed and tested by the end of Monday 30 November 2026, or it is dropped and GRAVEREPO ships with direct mode plus the demo. |
-| D21 | Simplifications | Cancelling does not abort a shared request. One provenance per detail. The proxy returns `nextPage`. Cache-full handling clears GRAVEREPO entries. Rate-limit status is included in data results. |
+| D21 | Simplifications | Cancelling does not abort a shared request. One provenance per detail. The proxy returns `nextPage`. Cache-full handling clears only the GitHub cache entries (`graverepo:` prefix) and never the ritual progress (`graverepo-progress:` prefix); amended 22 November 2026 to protect ritual progress (Req 7.11). Rate-limit status is included in data results. |
 | D22 | Partial lists | Not cached |
 | D23 | Username validation | 1–39 characters, letters, digits and hyphens, no leading hyphen. GitHub handles the rest. |
 | D24 | Demo snapshot delivery | Included in the deployed app. Imported into the bundle if 300 KB or smaller; otherwise deployed as a static file alongside the app and loaded at startup. No dependence on GitHub or any external data service. Works offline once the app has loaded. (Req 8.13–8.19) |

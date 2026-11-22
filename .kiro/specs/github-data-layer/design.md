@@ -339,7 +339,7 @@ These are the only functions screens may use.
 - **Freshness:** an entry is fresh while `now − fetchTime` is less than the window from the catalogue.
 - **What isn't cached:** partial lists (Requirement 7.8) and errors.
 - **Unreadable entries** or entries with a different schema version are deleted.
-- **When storage is full or fails:** remove every `graverepo:` key from `localStorage` and continue with memory only for the rest of the session.
+- **When storage is full or fails:** remove every GitHub cache key (keys starting with `graverepo:`) from `localStorage` and continue with memory only for the rest of the session. Ritual progress is stored under the separate `graverepo-progress:` prefix (owned by the `resurrection-ritual` spec). The cache never reads, writes or removes those keys.
 - **In-flight deduplication:** identical running requests share one promise. Each caller's cancellation only affects that caller.
 
 ### 4.8 Demo graveyard (`src/data/demo`)
@@ -693,7 +693,7 @@ All tests use **Vitest**. Property tests use **fast-check**. No test calls the r
 - Failure with a stale entry: the stale entry is served with `refreshError`.
 - Partial lists aren't cached. Lists truncated at the cap are.
 - Entries with the wrong schema version, or corrupted entries, are deleted.
-- A storage write error clears GRAVEREPO keys and switches to memory only.
+- A storage write error clears the GitHub cache keys (`graverepo:` prefix) and switches to memory only. Keys with the `graverepo-progress:` prefix are left untouched.
 - Two identical concurrent calls send one request. Cancelling one caller doesn't affect the other.
 - `forceRefresh` skips the cache.
 
