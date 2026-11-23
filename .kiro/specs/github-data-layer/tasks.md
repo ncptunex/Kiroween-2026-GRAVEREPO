@@ -18,61 +18,61 @@ All decisions D1–D29 are approved (see the decision log in `requirements.md`).
 
 ## Phase 1 (MVP)
 
-- [ ] 1. Preparation [22 Nov]
-  - [ ] 1.1 Add Zod (runtime dependency, D10) and fast-check (development dependency, D11). Confirm the Zod major version. Confirm Vitest runs an empty test.
-  - [ ] 1.2 Check GitHub's REST API docs for the current API version, and record it for task 3.1. The docs currently show `2026-03-10`.
+- [x] 1. Preparation [22 Nov]
+  - [x] 1.1 Add Zod (runtime dependency, D10) and fast-check (development dependency, D11). Confirm the Zod major version. Confirm Vitest runs an empty test.
+  - [x] 1.2 Check GitHub's REST API docs for the current API version, and record it for task 3.1. The docs currently show `2026-03-10`.
     _Req 12.5_
-  - [ ] 1.3 Confirm from a real browser request that GitHub's CORS settings let the browser read the `Link`, `x-ratelimit-*` and `retry-after` headers. Note the result in `docs/kiro-journal.md`.
+  - [x] 1.3 Confirm from a real browser request that GitHub's CORS settings let the browser read the `Link`, `x-ratelimit-*` and `retry-after` headers. Note the result in `docs/kiro-journal.md`.
     _Req 3.3, 9.1_
 
-- [ ] 2. Test fixtures [22 Nov]
-  - [ ] 2.1 Create `tests/fixtures/github/captured/` and `tests/fixtures/github/constructed/`. Write a short README in each folder explaining its rules.
+- [x] 2. Test fixtures [22 Nov]
+  - [x] 2.1 Create `tests/fixtures/github/captured/` and `tests/fixtures/github/constructed/`. Write a short README in each folder explaining its rules.
     _Req 14.1–14.3_
-  - [ ] 2.2 Using the GitHub MCP, capture the real responses listed in design 8.1. Save each one with its metadata (endpoint, capture date, source) and remove email fields. This is a one-time development step: builds and tests never contact GitHub.
+  - [x] 2.2 Using the GitHub MCP, capture the real responses listed in design 8.1. Save each one with its metadata (endpoint, capture date, source) and remove email fields. This is a one-time development step: builds and tests never contact GitHub.
     _Req 8.18, 13.1, 14.2_
-  - [ ] 2.3 Write the constructed fixtures listed in design 8.1. Mark each one as constructed and describe its case. Add any case that couldn't be captured in 2.2, such as an empty or renamed repository.
+  - [x] 2.3 Write the constructed fixtures listed in design 8.1. Mark each one as constructed and describe its case. Add any case that couldn't be captured in 2.2, such as an empty or renamed repository.
     _Req 14.3, 14.5_
 
-- [ ] 3. Endpoint catalogue [22 Nov]
-  - [ ] 3.1 Create the catalogue: pinned API version, Accept header, base URL, every MVP endpoint (including `org-repos`), allowed query values, freshness windows, the known-manifest list, and the optional-section switches (D26).
+- [x] 3. Endpoint catalogue [22 Nov]
+  - [x] 3.1 Create the catalogue: pinned API version, Accept header, base URL, every MVP endpoint (including `org-repos`), allowed query values, freshness windows, the known-manifest list, and the optional-section switches (D26).
     _Req 2.1, 2.2, 4.8, 4.13, 7.2, 12.5_
-  - [ ] 3.2 Add the username validator (D23) and the repository-name validator.
+  - [x] 3.2 Add the username validator (D23) and the repository-name validator.
     _Req 1.1, 1.2_
-  - [ ] 3.3 Add a function that builds a GitHub URL from an endpoint ID and values, and rejects anything not in the catalogue.
+  - [x] 3.3 Add a function that builds a GitHub URL from an endpoint ID and values, and rejects anything not in the catalogue.
     _Req 12.1_
-  - [ ] 3.4 Write unit tests and the username property test (design 8.9).
+  - [x] 3.4 Write unit tests and the username property test (design 8.9).
     _Req 1.2_
 
-- [ ] 4. Data types and errors [23 Nov]
-  - [ ] 4.1 Define the provenance, rate-limit status, data result, field result and warning types (design 5.1–5.3, 5.7 and 5.10), and the demo graveyard type (design 5.8). The UI specs rely on these shapes.
+- [x] 4. Data types and errors [23 Nov]
+  - [x] 4.1 Define the provenance, rate-limit status, data result, field result and warning types (design 5.1–5.3, 5.7 and 5.10), and the demo graveyard type (design 5.8). The UI specs rely on these shapes.
     _Req 9.2, 10.1, 10.2_
-  - [ ] 4.2 Define the error kinds, message keys, `details`, `demoAvailable` and `retryable` flags (design 5.9).
+  - [x] 4.2 Define the error kinds, message keys, `details`, `demoAvailable` and `retryable` flags (design 5.9).
     _Req 6, 8.9, 9.9_
-  - [ ] 4.3 Write the function that turns an HTTP status, headers and body into an error kind, including the primary, secondary and forbidden rules for 403 and 429.
+  - [x] 4.3 Write the function that turns an HTTP status, headers and body into an error kind, including the primary, secondary and forbidden rules for 403 and 429.
     _Req 6.6–6.8, 9.4–9.6_
-  - [ ] 4.4 Write unit tests for every row of the error table, using constructed fixtures.
+  - [x] 4.4 Write unit tests for every row of the error table, using constructed fixtures.
     _Req 6, 9_
 
-- [ ] 5. Zod schemas and adapters [23 Nov]
-  - [ ] 5.1 Write the `user` schema and adapter (user and organisation).
+- [x] 5. Zod schemas and adapters [23 Nov]
+  - [x] 5.1 Write the `user` schema and adapter (user and organisation).
     _Req 1.5, 5_
-  - [ ] 5.2 Write the repository schema, shared by `user-repos`, `org-repos` and `repo`. Check each list item separately. Drop invalid and private items and count them.
+  - [x] 5.2 Write the repository schema, shared by `user-repos`, `org-repos` and `repo`. Check each list item separately. Drop invalid and private items and count them.
     _Req 2.3, 2.4, 5.5, 6.1, 6.2, 13.3_
-  - [ ] 5.3 Write the `readme` adapter, treating "not found" as "no README found".
+  - [x] 5.3 Write the `readme` adapter, treating "not found" as "no README found".
     _Req 6.4_
-  - [ ] 5.4 Write the `commits` schema and adapters: latest commit, recent authors and manifest last change. Use the committer date. Identify authors by login or name, never email. Handle empty repositories and lower bounds.
+  - [x] 5.4 Write the `commits` schema and adapters: latest commit, recent authors and manifest last change. Use the committer date. Identify authors by login or name, never email. Handle empty repositories and lower bounds.
     _Req 4.6, 5.9, 5.10, 6.3, 13.2_
-  - [ ] 5.5 Write the merged `issues` adapter: count excluding pull requests, oldest open issue, lower bound, and the "all 100 are pull requests" case.
+  - [x] 5.5 Write the merged `issues` adapter: count excluding pull requests, oldest open issue, lower bound, and the "all 100 are pull requests" case.
     _Req 4.4, 5.6, 5.9_
-  - [ ] 5.6 (Optional section) Write the `branches` adapter: count and lower bound only.
+  - [x] 5.6 (Optional section) Write the `branches` adapter: count and lower bound only.
     _Req 4.4_
-  - [ ] 5.7 (Optional section) Write the `workflow-runs` adapter, treating no runs as "no workflow runs found".
+  - [x] 5.7 (Optional section) Write the `workflow-runs` adapter, treating no runs as "no workflow runs found".
     _Req 6.5_
-  - [ ] 5.8 (Optional section) Write the `root-contents` adapter and the manifest detection rule.
+  - [x] 5.8 (Optional section) Write the `root-contents` adapter and the manifest detection rule.
     _Req 4.8, 4.9_
-  - [ ] 5.9 Write adapter unit tests (design 8.2), using captured fixtures for normal cases and constructed fixtures for edge cases.
+  - [x] 5.9 Write adapter unit tests (design 8.2), using captured fixtures for normal cases and constructed fixtures for edge cases.
     _Req 5, 6, 14.4_
-  - [ ] 5.10 Write the adapter property tests (design 8.9, rows 1, 2 and 5).
+  - [x] 5.10 Write the adapter property tests (design 8.9, rows 1, 2 and 5).
     _Req 5.3, 5.4, 6.9, 13.3_
 
 - [ ] 6. Demo graveyard [24 Nov, **unblocks the UI**]
