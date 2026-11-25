@@ -309,7 +309,7 @@ The app opens on the landing page. For the demo, the visitor opens the demo agai
 
 All dashboard text lives in dashboard text modules (R12.1). Honesty-bearing lines use the voice document. The new lines below are proposed.
 
-### 8.1 Proposed wording (not yet in the voice document)
+### 8.1 Wording (status: partial-list, error, count and age lines approved and in `voice-and-honesty.md` 5.8 and 5.10; the introduction, footer note and stage meanings below are still not approved, so the fallback applies)
 
 | Item | Proposed text | Needs voice update? |
 |---|---|---|

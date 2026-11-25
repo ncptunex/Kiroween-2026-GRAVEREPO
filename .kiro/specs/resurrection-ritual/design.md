@@ -535,15 +535,15 @@ Keep generated lists small. Save any failing case as an ordinary unit test.
 - Shared error text for data-layer errors belongs to one shared module that the dashboard spec also uses. The ritual only calls it.
 - The wording module returns structured parts (label, fact, source) so Lantern Mode can present them in another way.
 
-### 10.1 Wording pending approval (task 1.2)
+### 10.1 Approved wording (task 1.2 done: added to `voice-and-honesty.md` 5.1 to 5.4, 5.8 and 5.10)
 
-None of this is in `voice-and-honesty.md` yet. This spec does not edit that document. Each line needs your approval and a separate steering update.
+All lines below are approved and are now in `voice-and-honesty.md`, which is the source of truth. The revive-disabled line uses the approved final form.
 
 | Item | Proposed wording | Where used |
 |---|---|---|
 | Empty plan | "We didn't find anything to suggest from what we could see." | Plan screen (5.3), Req 5.11 |
 | Plan-changed note | "This plan changed because newer GitHub data was available. Your ticks are kept, and progress now counts the current steps." | Rising and Plan screens (3.2), Req 8.11. Wording approval is still pending (task 1.2). |
-| Revive-disabled explanation | "{n} steps left before you can mark this as revived." (singular: "1 step left before you can mark this as revived.") | Rising screen (6.3), Req 7.2 |
+| Revive-disabled explanation | "{n} steps left before you can mark this repository as revived in GRAVEREPO." (singular: "1 step left before you can mark this repository as revived in GRAVEREPO.") | Rising screen (6.3), Req 7.2 |
 | Pending request-estimate note | Reuses the approved `may-not-complete` line from voice 5.8, "GitHub may run out of lookups before we finish checking this repository. We'll show what we can." The approval needed is that the same line may be shown while the request is pending. | Necropsy loading (3.1), Req 10.9 |
 | Open issues, count 0 with a lower bound | "No open issue found. The count may be incomplete." (O15) | Necropsy (4.2), Req 2.12 |
 | Archived suggestions-only note | "These steps are suggestions only. We can't tell whether they can be done while this repository stays archived." | Plan screen (5.1), Req 5.14 |

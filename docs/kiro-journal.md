@@ -91,3 +91,30 @@ Running notes for the Kiro write-up (see `docs/roadmap.md`).
 - **Tests:** fixture-rule checks (README rules), the catalogue and URL builder, the username property test, every error-table row, adapter unit tests on captured fixtures (with constructed ones for edge cases), an email check on all adapter outputs, and the adapter property tests (design 8.9 rows 1, 2 and 5). Fixtures load through `import.meta.glob`, so no `@types/node` was added.
 - **Results:** `tsc --noEmit` clean. Vitest: 6 files, 228 tests passed. `vite build` succeeded.
 - **Verification gates (read-only):** ritual 1.4 and the types part of dashboard 1.3 match the actual types. The open-issues value now records `itemsRead` and `oldestNotFoundInFirst100`, so the "first 100 open items" wording is supported by an explicit field (ritual O15 decides whether to use it).
+
+### Milestone 3: transport, rate limits and cache (tasks 7.1–7.5 and 8.1–8.4, done)
+
+- The real demo capture (6.5) is deferred until a local GITHUB_TOKEN is set. Tasks 6.5 and 6.8 stay open. No snapshot exists, and none was made up. The test snapshot built from captured fixtures is test data only.
+- **Transport (7.1, 7.2):** src/data/github/transport/. A transport never throws, takes only catalogue requests and sends the pinned headers with no Authorization header and no cookies. Failures are marked 
+etwork, 	imeout (10 s) or cancelled.
+- **Rate limits (7.3, 7.4):** ate-limit.ts and oute-selector.ts. The budget is unknown until the first response and again after the reset time. A primary limit blocks the route until its reset time. A secondary limit and a plain 403 do not block. Nothing is retried. Demo-only mode refuses live requests with a 
+etwork error that offers the demo (the closest existing kind, so no new kind was added).
+- **Cache (8.1–8.3):** src/data/cache/. Memory in front of localStorage, key graverepo:v1:{type}:{lowercase ids}, Zod-checked payloads, older-version keys removed at start, and only graverepo: keys removed on a write failure (progress keys untouched). orceRefresh skips the cache completely, including the stale fallback. A shared in-flight request is never aborted by one caller cancelling.
+- **Tests:** transport, rate-limit and cache tests, including the freshness property test and a property check that cached data is never labelled live. No network, no real localStorage.
+- **Next:** task 9 (public functions) needs no snapshot. 9.1–9.7 build on this milestone.
+
+### Wording approval and the demo-first MVP screens (23 Nov 2026)
+
+- **Approved wording (all four groups) recorded** in `.kiro/steering/voice-and-honesty.md` (5.1 to 5.4, 5.8 and new 5.10) and marked approved in the ritual design 10.1 and dashboard design 8.1. Ritual task 1.2 is done. Dashboard task 1.2 is partly done: the introduction, footer note and stage meanings in dashboard design 8.1 were not in the approved list, so the fallback stays (tagline, empty line and controls only; the existing voice line is the footer).
+- **Palette chosen** and recorded with contrast ratios in `src/styles/tokens.css` and `design-system.md` (dashboard 4.1).
+- **Built:** wording module (`src/components/wording.ts`, in `components/` because `src/ritual/` may not use `Intl`), tombstone view, `App.tsx` wired to the shell, landing, graveyard, tombstone, Necropsy, Plan, Rising (checklist, meter, revive gate), The Living, and the live search wiring through the existing data layer.
+- **Decisions made without asking:** a "Note:" label for interpretations, "Leads to a suggested step" for finding rows, "GitHub search" and "Demo graveyard" as source labels, and one plain line for the error boundary. These are interface labels, not claims. Review them in `ui-text.ts` and `wording.ts`.
+- **Still deferred:** the real demo snapshot (needs a token and a manual capture). The journey tests use the test-only demo in `tests/ritual/test-demo.ts`. Without a snapshot, "Explore the demo graveyard" shows the demo-unavailable error in the real app.
+- **Not done:** manual keyboard walk and browser checks (17.1, 17.2), live search by hand (dashboard 6.3), and 15.2 and 15.3.
+
+### Moonlit Plot visual redesign and O12 (25 Nov 2026)
+
+- **O12 approved by the project owner:** the Rising garden picture is built, with six stages derived from the existing done and total step counts (`src/components/garden-stage.ts`): 0 bare and cracked, 1 moss, 2 sprouts, 3 flowers, 4 glowing mushrooms (all steps ticked), 5 full garden with lantern (marked as revived in GRAVEREPO). The picture is decoration and hidden from assistive technology. The progress text and meter still carry the information.
+- **Decisions from the owner:** keep the system font stack (no font assets), no PRODUCT.md or DESIGN.md (the steering documents are enough), no preview page and no older captured data for visual checks. Graveyard and Rising screens wait for the real demo snapshot for a visual check.
+- **Built (CSS and SVG only, no dependency):** `src/components/scenery/` (ghost in three poses, night sky, garden plot, tombstone foot art by condition, stage glyphs), arched tombstone cards with a ghost that peeks on hover or focus, a night-sky band and lawn on the graveyard screen, a hero scene on the landing page, a ghost loading indicator, stone-tablet checklist and mint meter, flowerbed cards in The Living, and restyled buttons, panels and notices. A one-sided success notice bar was replaced by a full border.
+- **Unchanged:** data layer, state, ritual domain, storage, wording modules and all tests.

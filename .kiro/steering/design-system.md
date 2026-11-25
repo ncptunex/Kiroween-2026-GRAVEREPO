@@ -44,7 +44,7 @@ Rules:
 - Dark theme only for the MVP.
 - Mint means growth and success, pumpkin means attention, and neither means "good" or "bad" about a developer.
 - Do not add more accent colours. Do not use red as a decorative colour. If an error colour is needed, define it as a role and pair it with an icon and text.
-- **(Open)** Final hex values. Pick them so that body text meets WCAG AA contrast (4.5:1), large text and interface components meet 3:1, and record the values and checked ratios in the tokens file.
+- **Final values (chosen 23 Nov 2026, recorded with their ratios in `src/styles/tokens.css`):** bg #0f1224, surface #1b1f3b, text #f2f3fa (16.76:1 on bg), muted #b9bdd8 (8.68:1 on surface), primary #5b3fc4 with white text (7.11:1), lavender #c3b5ff (8.71:1 on surface), mint #7be3b0 (10.31:1), pumpkin #ffa94d (8.45:1), error #ff9e9e (8.15:1), border #8d93c4 (5.44:1 on surface). All meet 4.5:1 for text and 3:1 for controls.
 
 ### 3.2 Motifs
 
@@ -65,7 +65,7 @@ Allowed: ghost mascots, tombstones, bats, mushrooms, moss, cracks, cobwebs.
 - Prefer a system font stack or a self-hosted font. No third-party font requests at runtime, so the app still works offline (the demo must work offline, requirement 8.15 of `github-data-layer`).
 - Body text at least 16px. Line length about 45–80 characters. Line height comfortable for reading.
 - Hierarchy: page title, section heading, card title, body, caption. Four or five steps are enough. Use size and weight, not colour, to show hierarchy.
-- **(Open)** Chosen typefaces.
+- Typeface: the system font stack (decided 23 Nov 2026). No remote fonts.
 
 ### 3.4 Spacing and layout
 
@@ -191,8 +191,8 @@ The target is WCAG 2.2 AA for the core journey. Specific checks before the check
 
 ## 8. Open decisions
 
-- Final colour values and checked contrast ratios.
-- Final typefaces.
+- (Closed) Final colour values and checked contrast ratios: see 3.1.
+- (Closed) Typeface: system font stack.
 - Mascot design and number of mascot poses.
 - Whether the display style is used beyond the logo and main headings.
 - Icon set.

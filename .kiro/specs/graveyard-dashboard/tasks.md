@@ -21,81 +21,81 @@ Each task is small enough to finish and review on its own. Tasks list the requir
 
 - [ ] 1. Review and verification [by Tue 24 Nov]
   - [x] 1.1 **Input needed:** review `requirements.md`, `design.md` and this file. Object to any of DD1 to DD10 you want changed. Silence means they stand.
-  - [ ] 1.2 **Pending approval, separate steering update:** add the proposed wording in `design.md` 8.1 to `voice-and-honesty.md` together with the ritual's wording. **This spec's tasks do not edit that document.** Until it is approved, use the fallback in 8.1.
+  - [x] 1.2 **Partly approved and added to `voice-and-honesty.md` (journal 23 Nov). Introduction, footer note and stage meanings are not approved, so the fallback applies:** add the proposed wording in `design.md` 8.1 to `voice-and-honesty.md` together with the ritual's wording. **This spec's tasks do not edit that document.** Until it is approved, use the fallback in 8.1.
     _R12.5_
-  - [ ] 1.3 **Verification gate (after data-layer tasks 4.1, 5.2 and 6.6):** read the actual types and confirm what the dashboard relies on: the data result shape (`ok`, `data`, `provenance`, `warnings`, `refreshError`), the repository list fields (`owner`, `repositories`, `retrievedCount`, `totalPublicCount`, `truncated`, `partial`, `droppedInvalidCount`), the summary fields (`owner`, `name`, `url`, `description`, `primaryLanguage`, `isFork`, `isArchived`, `pushedAt`), the error fields (`kind`, `details`, `demoAvailable`, `retryable`) and the demo graveyard shape (`capturedAt`, `sourceAccounts`, `repositories`). If anything differs, **stop and report**. Do not change the data-layer spec.
+  - [x] 1.3 **Verification gate (after data-layer tasks 4.1, 5.2 and 6.6)** (done: every listed type and field matches src/data/github/types.ts and rror-kinds.ts)**:** read the actual types and confirm what the dashboard relies on: the data result shape (`ok`, `data`, `provenance`, `warnings`, `refreshError`), the repository list fields (`owner`, `repositories`, `retrievedCount`, `totalPublicCount`, `truncated`, `partial`, `droppedInvalidCount`), the summary fields (`owner`, `name`, `url`, `description`, `primaryLanguage`, `isFork`, `isArchived`, `pushedAt`), the error fields (`kind`, `details`, `demoAvailable`, `retryable`) and the demo graveyard shape (`capturedAt`, `sourceAccounts`, `repositories`). If anything differs, **stop and report**. Do not change the data-layer spec.
     _R3, R4, R8, R9_
-  - [ ] 1.4 **Verification gate (after ritual task 10.1):** confirm the actual signatures of `openRitual`, `closeRitual` and `listRevived`, and of the ritual's wording and condition functions. If they differ from `design.md`, update the thin adapters in the dashboard state only. Do not edit the ritual spec.
+  - [x] 1.4 **Done (openRitual(repository, source, { summary }), closeRitual() and listRevived() confirmed; the dashboard session adapts to that shape). The wording module now exists. Verification gate (after ritual task 10.1):** confirm the actual signatures of `openRitual`, `closeRitual` and `listRevived`, and of the ritual's wording and condition functions. If they differ from `design.md`, update the thin adapters in the dashboard state only. Do not edit the ritual spec.
     _R6, R7_
 
 ## Group B: Pure helpers and shared state helpers [Wed 25 Nov morning]
 
-- [ ] 2. Helpers
-  - [ ] 2.1 Write `display-context.ts` (reads `Intl` once, fallback `en` and `UTC`) and `clock.ts` (injectable `now()`). If the ritual already created them, reuse them.
+- [x] 2. Helpers
+  - [x] 2.1 Write `display-context.ts` (reads `Intl` once, fallback `en` and `UTC`) and `clock.ts` (injectable `now()`). If the ritual already created them, reuse them.
     _R9.5, R12_ _D-U6_
-  - [ ] 2.2 Write `graveyard-filters.ts`: `filterRepositories` and the default filters.
+  - [x] 2.2 Write `graveyard-filters.ts`: `filterRepositories` and the default filters.
     _R5.1, R5.2_ _D-U1, D-P1_
-  - [ ] 2.3 Write `provenance-text.ts`: `describeProvenance` for the five situations.
+  - [x] 2.3 Write `provenance-text.ts`: `describeProvenance` for the five situations.
     _R3.3_ _D-U2, D-P2_
-  - [ ] 2.4 Write `error-text.ts`: one function for every error kind, returning message, demo offer and retry time as structured parts. Use only the voice 5.8 wording.
+  - [x] 2.4 Write `error-text.ts`: one function for every error kind, returning message, demo offer and retry time as structured parts. Use only the voice 5.8 wording.
     _R9.4, R9.5, R8.5_ _D-U3, D-P3_
-  - [ ] 2.5 Write `list-notices.ts`: truncated, partial (with and without total) and dropped-invalid notices. Never mention private repositories.
+  - [x] 2.5 Write `list-notices.ts`: truncated, partial (with and without total) and dropped-invalid notices. Never mention private repositories.
     _R3.5, R3.6_ _D-U4_
-  - [ ] 2.6 Write `tombstone-view.ts` using the ritual's `deriveCondition`, dates and wording (task 1.4 confirms them). No thresholds here. If the ritual wording is not available, show the date fact only.
+  - [x] 2.6 **Done 23 Nov (wording module in `src/components/wording.ts`).** Write `tombstone-view.ts` using the ritual's `deriveCondition`, dates and wording (task 1.4 confirms them). No thresholds here. If the ritual wording is not available, show the date fact only.
     _R4.1–R4.9, R4.12_ _D-U5, D-P4_
-  - [ ] 2.7 Write the unit and property tests for 2.1 to 2.6.
+  - [x] 2.7 **Done.** Write the unit and property tests for 2.1 to 2.6.
     _D-U1–D-U6, D-P1–D-P4_
 
 ## Group C: Dashboard state [Wed 25 Nov]
 
-- [ ] 3. State actions
-  - [ ] 3.1 Write `dashboard-session.ts` with the state shape and actions in `design.md` 3, starting with the demo path (`openDemo`, `openTombstone`, `backToGraveyard`, `showLiving`, `goHome`, filters, `refreshRevivedCount`). Do not call any data-layer function at startup.
+- [x] 3. State actions
+  - [x] 3.1 Write `dashboard-session.ts` with the state shape and actions in `design.md` 3, starting with the demo path (`openDemo`, `openTombstone`, `backToGraveyard`, `showLiving`, `goHome`, filters, `refreshRevivedCount`). Do not call any data-layer function at startup.
     _R1.6, R6, R7.1, R8.1, R8.8, R10.1, R11.1–R11.3_
-  - [ ] 3.2 Add `searchAccount` with the `AbortController`, the request token, dropping of late results and ignoring `cancelled`. A failed search clears the graveyard. Reset filters on a new graveyard. Test against a fake data layer first.
+  - [x] 3.2 Add `searchAccount` with the `AbortController`, the request token, dropping of late results and ignoring `cancelled`. A failed search clears the graveyard. Reset filters on a new graveyard. Test against a fake data layer first.
     _R2.4, R2.5, R2.7, R3.1, R9.7_
-  - [ ] 3.3 Add the 8-second "taking a while" flag (`isSlow`) for a running search. Keep one timer handle, clear it on success, error, `cancelled`, a newer search, `openDemo()` and disposal, and ignore a stale-token callback (`design.md` 3.2).
+  - [x] 3.3 Add the 8-second "taking a while" flag (`isSlow`) for a running search. Keep one timer handle, clear it on success, error, `cancelled`, a newer search, `openDemo()` and disposal, and ignore a stale-token callback (`design.md` 3.2).
     _R9.2_ _D-S7_
-  - [ ] 3.4 Write the state tests.
+  - [x] 3.4 Write the state tests.
     _D-S1–D-S7, D-I2_
 
 ## Group D: Shell and shared components [Wed 25 Nov]
 
-- [ ] 4. Shared pieces
-  - [ ] 4.1 Create `styles/tokens.css` and `base.css` (if the ritual has not): colour roles, a 4px spacing scale, one radius family, a system font stack, focus ring, `prefers-reduced-motion`. Choose colour values that meet the contrast ratios in `design-system.md` and record the checked ratios in the file.
+- [x] 4. Shared pieces
+  - [x] 4.1 **Done 23 Nov: palette and ratios recorded in `tokens.css` and `design-system.md`.** Create `styles/tokens.css` and `base.css` (if the ritual has not): colour roles, a 4px spacing scale, one radius family, a system font stack, focus ring, `prefers-reduced-motion`. Choose colour values that meet the contrast ratios in `design-system.md` and record the checked ratios in the file.
     _R13.1, R13.4_
-  - [ ] 4.2 Write `Notice` (info, warning, error, success, each with an icon and text), `DataSourceBadge` and `LoadingIndicator` (static under reduced motion). Ritual task 11.2 reuses these.
+  - [x] 4.2 Write `Notice` (info, warning, error, success, each with an icon and text), `DataSourceBadge` and `LoadingIndicator` (static under reduced motion). Ritual task 11.2 reuses these.
     _R3.3, R9.1, R9.6, R13.3, R13.5, R13.6_
-  - [ ] 4.3 Write the external-link helper (https only, `rel="noopener noreferrer"`).
+  - [x] 4.3 Write the external-link helper (https only, `rel="noopener noreferrer"`).
     _R3.1, R7.2, R11.7_ _D-I4_
-  - [ ] 4.4 Write `App.tsx`: skip link, header with logo, "Demo graveyard" and "The Living ({n})", one `main`, footer note, view switch, focus on the view heading, error boundary.
+  - [x] 4.4 **Partly done: AppShell, ErrorBoundary and ViewHeading exist with all text as props. App.tsx is not wired until the header, footer and fallback wording is approved.** Write `App.tsx`: skip link, header with logo, "Demo graveyard" and "The Living ({n})", one `main`, footer note, view switch, focus on the view heading, error boundary.
     _R7.1, R10.1–R10.7_
 
 ## Group E: Screens on demo data [Wed 25 – Thu 26 Nov]
 
 - [ ] 5. Screens
-  - [ ] 5.1 `SearchForm`: visible label, one field, one button, Enter submits, error linked to the field, keeps the typed text.
+  - [x] 5.1 `SearchForm`: visible label, one field, one button, Enter submits, error linked to the field, keeps the typed text.
     _R2.1, R2.6, R9.10_
-  - [ ] 5.2 Landing: name, tagline, introduction (approved wording or the fallback), search, demo button, stage list, empty line, static decorative picture.
+  - [ ] 5.2 **Partly done: name, tagline, search, demo button and empty line exist. The introduction (not approved), stage list and decorative picture are left out under the design 8.1 fallback and the cut order.** Landing: name, tagline, introduction (approved wording or the fallback), search, demo button, stage list, empty line, static decorative picture.
     _R1.1–R1.8_
-  - [ ] 5.3 `Tombstone` and `ConditionIcon`: one focusable control, accessible name, text plus icon for condition, archived and fork, plain text only, unknown values left out.
+  - [x] 5.3 `Tombstone` and `ConditionIcon`: one focusable control, accessible name, text plus icon for condition, archived and fork, plain text only, unknown values left out.
     _R4_
-  - [ ] 5.4 Graveyard screen: heading (live and demo forms), provenance badge, notices, compact search, filter toolbar with a polite count, list, empty-account, empty-filter, loading, error and stale states. Demo shows source accounts and `owner/name`.
+  - [x] 5.4 Graveyard screen: heading (live and demo forms), provenance badge, notices, compact search, filter toolbar with a polite count, list, empty-account, empty-filter, loading, error and stale states. Demo shows source accounts and `owner/name`.
     _R2.8, R3, R5, R8.2–R8.4, R8.7, R9_
-  - [ ] 5.5 Hand-off: activating a tombstone calls `openTombstone`. The ritual view shows "Back to the graveyard".
+  - [x] 5.5 Hand-off: activating a tombstone calls `openTombstone`. The ritual view shows "Back to the graveyard".
     _R6_
-  - [ ] 5.6 The Living screen: list, captions, source and archived labels, GitHub link, note, empty state, optional static picture.
+  - [x] 5.6 The Living screen: list, captions, source and archived labels, GitHub link, note, empty state, optional static picture.
     _R7_
-  - [ ] 5.7 Write the scan tests (no transports, `fetch`, `api.github.com`, `dangerouslySetInnerHTML` or remote assets in `src/components` and `src/screens`).
+  - [x] 5.7 Write the scan tests (no transports, `fetch`, `api.github.com`, `dangerouslySetInnerHTML` or remote assets in `src/components` and `src/screens`).
     _R11.1, R14.6_ _D-I3_
-  - [ ] 5.8 Write the demo integration test: open the demo, check the label, open a tombstone, `openRitual` is called with `demo`, `fetch` fails the test if called.
+  - [x] 5.8 **(uses the test-only demo; the real snapshot is still deferred)** Write the demo integration test: open the demo, check the label, open a tombstone, `openRitual` is called with `demo`, `fetch` fails the test if called.
     _R8, R14_ _D-I1_
 
 ## Group F: Live wiring [Fri 27 Nov]
 
 - [ ] 6. Live search
-  - [ ] 6.1 **Depends on data-layer task 9.3.** Verify the actual signature of `listRepositories` and its options, then wire it into `searchAccount`. Pass `signal`. Never pass `forceRefresh`.
+  - [x] 6.1 **Depends on data-layer task 9.3.** Verify the actual signature of `listRepositories` and its options, then wire it into `searchAccount`. Pass `signal`. Never pass `forceRefresh`.
     _R2.4, R11.2_
-  - [ ] 6.2 Show live errors, saved copies and stale labels with the shared modules. Offer the demo only when `demoAvailable` is true.
+  - [x] 6.2 Show live errors, saved copies and stale labels with the shared modules. Offer the demo only when `demoAvailable` is true.
     _R8.5, R9.4–R9.9_
   - [ ] 6.3 Check live search by hand for one user and one organisation, and the rate-limit, not-found and offline cases (checkpoint checks 4 and 5). Record the results in `docs/kiro-journal.md`.
 

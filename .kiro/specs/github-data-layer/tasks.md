@@ -76,71 +76,71 @@ All decisions D1–D29 are approved (see the decision log in `requirements.md`).
     _Req 5.3, 5.4, 6.9, 13.3_
 
 - [ ] 6. Demo graveyard [24 Nov, **unblocks the UI**]
-  - [ ] 6.1 **Input needed:** get the project owner's GitHub username.
+  - [x] 6.1 **Input needed:** get the project owner's GitHub username.
     _Req 8.2_
-  - [ ] 6.2 Using the GitHub MCP, check which required states (Requirement 8.5) the owner's public repositories show. Record the results in `src/data/demo/demo-notes.md`.
+  - [x] 6.2 Using the GitHub MCP, check which required states (Requirement 8.5) the owner's public repositories show. Record the results in `src/data/demo/demo-notes.md`.
     _Req 8.5_
-  - [ ] 6.3 For each missing state, find and verify a suitable public repository from another account, and add it to the curated list in `demo-notes.md`. If a state still can't be covered, record the gap and propose options before creating any repository. **Requires your review of the curated list.**
+  - [x] 6.3 For each missing state, find and verify a suitable public repository from another account, and add it to the curated list in `demo-notes.md`. If a state still can't be covered, record the gap and propose options before creating any repository. **Requires your review of the curated list.**
     _Req 8.2, 8.3, 8.6_
-  - [ ] 6.4 Write the capture script. It uses the catalogue, a local token if one is set, and the curated list. It calls every MVP endpoint (including the optional sections), removes emails and unused fields, and writes the snapshot with its capture date and sources.
+  - [x] 6.4 Write the capture script. It uses the catalogue, a local token if one is set, and the curated list. It calls every MVP endpoint (including the optional sections), removes emails and unused fields, and writes the snapshot with its capture date and sources.
     _Req 8.2–8.4, 13.4_
   - [ ] 6.5 Run the capture script. Check the snapshot size and choose the delivery option (D24): import it into the bundle if it's 300 KB or smaller, otherwise place it in `public/demo/`. Commit the snapshot.
     _Req 8.1, 8.7, 8.14, 8.18_
-  - [ ] 6.6 Write `loadDemoGraveyard`. It runs the snapshot through the same schemas and adapters, returns every repository's detail, sets demo provenance with the capture date, and never contacts GitHub. For a static file, load it once at startup and keep it in memory.
+  - [x] 6.6 Write `loadDemoGraveyard`. It runs the snapshot through the same schemas and adapters, returns every repository's detail, sets demo provenance with the capture date, and never contacts GitHub. For a static file, load it once at startup and keep it in memory.
     _Req 8.1, 8.4, 8.11, 8.13–8.15, 10.4_
-  - [ ] 6.7 Set `demoAvailable` on the error kinds listed in Requirement 8.9.
+  - [x] 6.7 Set `demoAvailable` on the error kinds listed in Requirement 8.9.
     _Req 8.9_
   - [ ] 6.8 Write the demo tests (design 8.8). These include the "no constructed fixtures" check, the `demo-notes.md` match, the startup test, the size test, and the **"no GitHub requests" test**, where `fetch` fails the test if called for GitHub.
     _Req 8.8, 8.12, 8.13, 8.14, 8.16, 8.19_
 
-- [ ] 7. Direct transport and rate limits [25 Nov]
-  - [ ] 7.1 Define the transport interface and the raw-response format (design 4.3).
+- [x] 7. Direct transport and rate limits [25 Nov]
+  - [x] 7.1 Define the transport interface and the raw-response format (design 4.3).
     _Req 12.4_
-  - [ ] 7.2 Write the direct transport: pinned headers, no token, `nextPage` from the `Link` header, 10-second timeout, transport-failure marking.
+  - [x] 7.2 Write the direct transport: pinned headers, no token, `nextPage` from the `Link` header, 10-second timeout, transport-failure marking.
     _Req 1.4, 3.3, 6.7, 12.5_
-  - [ ] 7.3 Write the rate-limit tracker. It records the status per route and reports the budget as "unknown" until the first response. It classifies 403 and 429 responses, blocks a route until reset, and supplies the status for every data result.
+  - [x] 7.3 Write the rate-limit tracker. It records the status per route and reports the budget as "unknown" until the first response. It classifies 403 and 429 responses, blocks a route until reset, and supplies the status for every data result.
     _Req 9.1–9.4, 9.7, 9.8, 9.12_
-  - [ ] 7.4 Write the Phase 1 route selector: refuse blocked routes, otherwise use direct mode. Support the demo-only configuration. Make no request at startup.
+  - [x] 7.4 Write the Phase 1 route selector: refuse blocked routes, otherwise use direct mode. Support the demo-only configuration. Make no request at startup.
     _Req 8.16, 12.6_
-  - [ ] 7.5 Write transport and rate-limit tests (design 8.7).
+  - [x] 7.5 Write transport and rate-limit tests (design 8.7).
     _Req 9_
 
-- [ ] 8. Cache [25 Nov]
-  - [ ] 8.1 Write the memory and `localStorage` cache with schema version, key format and the storage-failure rule.
+- [x] 8. Cache [25 Nov]
+  - [x] 8.1 Write the memory and `localStorage` cache with schema version, key format and the storage-failure rule.
     _Req 7.1, 7.10, 7.11_
-  - [ ] 8.2 Add freshness checks, stale serving with `refreshError`, `forceRefresh`, and the "no partial lists" rule.
+  - [x] 8.2 Add freshness checks, stale serving with `refreshError`, `forceRefresh`, and the "no partial lists" rule.
     _Req 7.2–7.9_
-  - [ ] 8.3 Add in-flight deduplication, where a caller's cancellation affects only that caller.
+  - [x] 8.3 Add in-flight deduplication, where a caller's cancellation affects only that caller.
     _Req 7.12, 7.13_
-  - [ ] 8.4 Write cache tests with fake timers (design 8.6), plus the freshness property test.
+  - [x] 8.4 Write cache tests with fake timers (design 8.6), plus the freshness property test.
     _Req 7_
 
-- [ ] 9. Public functions [26 Nov]
-  - [ ] 9.1 Write `lookupUser`: trim, validate, cache, fetch, adapt, and cancel a replaced lookup.
+- [x] 9. Public functions [26 Nov]
+  - [x] 9.1 Write `lookupUser`: trim, validate, cache, fetch, adapt, and cancel a replaced lookup.
     _Req 1_
-  - [ ] 9.2 Write the pagination helper: follow `nextPage` up to 300, and set the truncated and partial flags.
+  - [x] 9.2 Write the pagination helper: follow `nextPage` up to 300, and set the truncated and partial flags.
     _Req 3_
-  - [ ] 9.3 Write `listRepositories`. It chooses the user or organisation endpoint, paginates, sorts with nulls last, applies the caching rules, and never returns demo data for a searched username.
+  - [x] 9.3 Write `listRepositories`. It chooses the user or organisation endpoint, paginates, sorts with nulls last, applies the caching rules, and never returns demo data for a searched username.
     _Req 2, 3, 7.8, 7.9, 8.10_
-  - [ ] 9.4 Write `estimateDetailRequests` (design 3.5).
+  - [x] 9.4 Write `estimateDetailRequests` (design 3.5).
     _Req 9.10, 9.12_
-  - [ ] 9.5 Write the three-step detail runner. It requests core first, then the independent sections (at most 4 at a time), then the dependent sections. It applies the skip rules and section switches, re-reads the budget after each response, and stops when the budget reaches 0.
+  - [x] 9.5 Write the three-step detail runner. It requests core first, then the independent sections (at most 4 at a time), then the dependent sections. It applies the skip rules and section switches, re-reads the budget after each response, and stops when the budget reaches 0.
     _Req 4.2–4.11, 4.13, 4.14, 9.13, 9.14_
-  - [ ] 9.6 Write `getRepositoryDetail`: official name, `renamedFrom`, empty repositories, cache, one provenance, and the advisory `may-not-complete` warning.
+  - [x] 9.6 Write `getRepositoryDetail`: official name, `renamedFrom`, empty repositories, cache, one provenance, and the advisory `may-not-complete` warning.
     _Req 4, 6.3, 6.10, 6.11, 9.11, 9.15, 10.2_
-  - [ ] 9.7 Write `getRateLimitStatus`.
+  - [x] 9.7 Write `getRateLimitStatus`.
     _Req 9.3_
-  - [ ] 9.8 Write the detail runner tests (design 8.4, including the budget cases) and the pagination tests (design 8.5). Add the property tests for sorting, the cap, the request count, "never more than the estimate", "stop at 0" and "never live" (design 8.9).
+  - [x] 9.8 Write the detail runner tests (design 8.4, including the budget cases) and the pagination tests (design 8.5). Add the property tests for sorting, the cap, the request count, "never more than the estimate", "stop at 0" and "never live" (design 8.9).
     _Req 2.6, 3.4, 4.11, 9.10, 9.14, 10.3_
-  - [ ] 9.9 Write a test confirming that no public function throws, for any fixture or error.
+  - [x] 9.9 Write a test confirming that no public function throws, for any fixture or error.
     _Req 6.9_
 
 - [ ] 10. Security, privacy and Phase 1 sign-off [27 Nov]
-  - [ ] 10.1 Add the token-pattern scan as a test, and as a Kiro hook on save for `src/`, `shared/` and `api/`.
+  - [x] 10.1 Add the token-pattern scan as a test, and as a Kiro hook on save for `src/`, `shared/` and `api/`.
     _Req 11.1_
-  - [ ] 10.2 Add the email-pattern scan for the snapshot, captured fixtures and adapter outputs.
+  - [ ] 10.2 Add the email-pattern scan for the snapshot, captured fixtures and adapter outputs. *(Done for captured fixtures and adapter outputs in `tests/security/security.test.ts`. The snapshot part waits for task 6.5, so this stays open.)*
     _Req 13.5_
-  - [ ] 10.3 Add a simple test that fails if a file in `src/components` or `src/screens` imports transports, schemas or adapters, or contains `api.github.com`.
+  - [x] 10.3 Add a simple test that fails if a file in `src/components` or `src/screens` imports transports, schemas or adapters, or contains `api.github.com`.
     _Req 12.1_
   - [ ] 10.4 Run the full test suite and fix any failures.
   - [ ] 10.5 Do the manual checks in design 8.12. Record the results and the Kiro learnings in `docs/kiro-journal.md`.

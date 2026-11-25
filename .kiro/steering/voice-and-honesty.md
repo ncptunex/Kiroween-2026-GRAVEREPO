@@ -95,13 +95,13 @@ The Necropsy lists observations only. Each finding has a label and the observed 
 
 | Finding | Wording when available | Wording when not |
 |---|---|---|
-| Last update | "Last updated {relative time} ({date})" | "Last update date not available" |
+| Last update | "Last updated {relative time} ({date})". For a date in the future: "Last updated {date}" with no relative phrase. | "Last update date not available" |
 | Latest commit | "Latest commit on {date} by {author}" | "Latest commit couldn't be checked" |
 | Archived | "Archived on GitHub" | (no line if not archived) |
 | Fork | "A fork of another repository" | (no line if not a fork) |
 | README | "README found" / "No README found" | "README couldn't be checked" |
-| Open issues | "{n} open issues" / "At least {n} open issues" / "No open issues" | "Open issues couldn't be checked" |
-| Oldest open issue | "Oldest open issue from {date}" | "No issue found in the first 100 open items" |
+| Open issues | "{n} open issues" / "At least {n} open issues" / "No open issues" (count 0, complete) / "No open issue found. The count may be incomplete." (count 0, lower bound) | "Open issues couldn't be checked" |
+| Oldest open issue | "Oldest open issue from {date}" | (no line when not found) |
 | Recent authors | "{n} people committed in the last 12 months" / "At least {n}…" | "Recent authors couldn't be checked" |
 | Branches | "{n} branches" / "At least {n} branches" | "Branch count couldn't be checked" |
 | Automated checks (CI) | "Latest workflow run: {result} on {date}" / "No workflow runs found" | "Workflow runs couldn't be checked" |
@@ -124,7 +124,7 @@ A condition is a short label on a tombstone, based on observable data. Names and
 - Always pair a condition label with the observable fact behind it ("Resting · last updated 14 months ago").
 - The label is an interpretation. The time since the last update is the fact.
 - A repository with unknown last-update data is "Last update not available". It is not given a resting or dormant label.
-- **(Open)** The condition names beyond those above, and the day or month thresholds between them. To be set in the `resurrection-ritual` spec.
+- Condition names (approved): "Archived", "Empty", "Last update not available", "Recently updated", "Resting", "Dormant". Thresholds (12 and 24 months) are defined in the `resurrection-ritual` spec. An archived repository is never labelled active or recently updated.
 
 ### 5.3 Revival recommendations
 
@@ -139,6 +139,11 @@ A condition is a short label on a tombstone, based on observable data. Names and
 
 Standard intro: "Here's a suggested plan based on what we could see on GitHub."
 
+- Plan item form (approved): "Because {fact}, you could {step}."
+- Empty plan (approved): "We didn't find anything to suggest from what we could see."
+- Archived repository (approved): "These steps are suggestions only. We can't tell whether they can be done while this repository stays archived."
+- Plan changed (approved): "This plan changed because newer GitHub data was available. Your ticks are kept, and progress now counts the current steps."
+
 ### 5.4 Rising progress
 
 The Rising shows the user's own progress through the plan. It happens only in GRAVEREPO.
@@ -150,6 +155,8 @@ The Rising shows the user's own progress through the plan. It happens only in GR
 | All steps done | "All steps done. Ready to mark as revived." |
 | Saved | "Progress saved on this device" |
 | Cannot save | "We couldn't save your progress on this device. It will be lost when you close this page." |
+| Revive disabled (approved) | "1 step left before you can mark this repository as revived in GRAVEREPO." / "{n} steps left before you can mark this repository as revived in GRAVEREPO." |
+| No required steps | "No steps" (progress is not a number) |
 
 Rules:
 - Progress means steps the user ticked, not changes GRAVEREPO detected on GitHub.
@@ -205,12 +212,12 @@ The data layer provides each error's `kind`, `messageKey` and details (see `gith
 | `network` (offline) | "We can't reach GitHub from here. Check your connection, or try the demo graveyard." |
 | `timeout` | "GitHub didn't answer in time. Try again, or try the demo graveyard." |
 | `rate-limited` (primary) | "GitHub allows only a limited number of lookups for each hour. We've used them up for now. You can look again at {time}, or try the demo graveyard." |
-| `rate-limited` (secondary) | "Too many lookups at once. Try again in {seconds} seconds." |
+| `rate-limited` (secondary) | "Too many lookups at once. Try again in {seconds} seconds." ("1 second" for one). Wait time unknown: "Too many lookups at once. Try again later." Never invent a time. |
 | `github-unavailable` | "GitHub seems to be having trouble right now. Try again later, or try the demo graveyard." |
 | `unexpected-response` | "GitHub sent something we didn't expect. Try again, or try the demo graveyard." |
-| `proxy-unavailable` (Phase 2) | "Our lookup helper isn't answering right now. Try the demo graveyard, or try again later." |
+| `proxy-unavailable` (Phase 2) | "Our lookup helper isn't answering right now. Try the demo graveyard, or try again later." Without the demo: "Our lookup helper isn't answering right now. Try again later." (approved) |
 | `forbidden` | "GitHub won't let us see this one." |
-| `user-not-found` | "We couldn't find an account called {name}. Check the spelling." |
+| `user-not-found` | "We couldn't find an account called {name}. Check the spelling." When the name is not known: "We could not find that account. Check the spelling." (approved) |
 | `repo-not-found` | "We couldn't find this repository. It may have been renamed, moved or made private." |
 | `invalid-username` | "GitHub usernames use letters, numbers and hyphens." |
 | `demo-unavailable` | "The demo graveyard couldn't be loaded. Please report this." |
@@ -222,7 +229,7 @@ Rules:
 - Never call a rate limit a failure of the user. Never describe `forbidden` as a rate limit.
 - If saved data is shown instead: "Showing a saved copy from {age}. We couldn't refresh it: {reason}."
 - A rate limit during a detail: "GitHub ran out of lookups part-way through. Some sections couldn't be checked. They'll be available after {time}."
-- `may-not-complete` warning: "GitHub may run out of lookups before we finish checking this repository. We'll show what we can." It is advisory and never blocks the user.
+- `may-not-complete` warning: "GitHub may run out of lookups before we finish checking this repository. We'll show what we can." It is advisory and never blocks the user. It may also be shown while the request is still loading (approved).
 - Mood words such as "lanterns out of oil" may appear as a short heading only, with the plain explanation under it.
 
 ### 5.9 Unavailable GitHub data
@@ -243,6 +250,14 @@ Use the same pattern everywhere.
 
 Never fill an unavailable field with a placeholder that looks like data (0, "None", "N/A" without an explanation).
 
+### 5.10 Approved additions (consolidated)
+
+- **Relative age.** "0 minutes ago", "1 minute ago", "{n} minutes ago", "1 hour ago", "{n} hours ago", "1 day ago", "{n} days ago". Months use the same pattern ("1 month ago", "{n} months ago"). Use the singular for 1.
+- **UTC fallback.** When the visitor's time zone cannot be determined, dates and times are formatted in UTC and labelled "UTC".
+- **Partial list.** "Some repositories couldn't be loaded." With a known total, add "Showing {n} of {total}." It never implies the whole account failed.
+- **Counts.** "1 repository couldn't be shown", "{n} repositories couldn't be shown", "1 second", "{n} seconds".
+- **Stale data.** A stale label appears only when the provenance says the data is a stale saved copy. No status is invented to fill a UI element.
+- **Missing name.** Never render an empty heading or the word "undefined". Use a neutral fallback.
 ## 6. Do and don't examples
 
 | Don't | Do |
@@ -269,6 +284,6 @@ Never fill an unavailable field with a placeholder that looks like data (0, "Non
 
 ## 8. Open decisions
 
-- Condition names beyond those above, and their thresholds (`resurrection-ritual`).
+- (Closed) Condition names and thresholds: approved, see 5.2.
 - Whether "lookups" or "requests" is the final user-facing term for GitHub requests.
-- Exact wording of plan items, which belongs to the plan rules in `resurrection-ritual`.
+- (Closed) Plan item wording: approved as "Because {fact}, you could {step}." The step texts are in `resurrection-ritual` design 5.1.
