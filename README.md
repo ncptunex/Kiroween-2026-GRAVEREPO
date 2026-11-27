@@ -1,4 +1,4 @@
-<img width="1911" height="1040" alt="Screenshot 2026-11-26 132533" src="https://github.com/user-attachments/assets/b8a7c54d-500b-489e-94a0-d1412f944922" /><img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/9fb8f519-03d5-44fc-9122-6699a158d94e" /># GRAVEREPO
+<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/9fb8f519-03d5-44fc-9122-6699a158d94e" /># GRAVEREPO
 
 **Dig up your forgotten code.**
 
