@@ -1,10 +1,39 @@
-# GRAVEREPO
+<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/9fb8f519-03d5-44fc-9122-6699a158d94e" /># GRAVEREPO
 
 **Dig up your forgotten code.**
 
 GRAVEREPO turns a GitHub account's public repositories into a small, friendly graveyard. Each repository with no recent updates becomes a tombstone. You can look at the evidence, get a suggested plan for picking it up again, tick off steps as you go, and watch the graveyard grow into a garden.
 
 Inactivity is a signal, not proof. A quiet repository may be finished, stable, paused or moved. GRAVEREPO never says why a repository went quiet, and it never calls one "dead". It shows what GitHub shows, labels its own readings as suggestions, and treats every repository and its owner with respect.
+
+## Project Links
+
+- **Live Demo:** https://graverepo.vercel.app/
+- **Demo Video:** [Watch the GRAVEREPO demo on YouTube](https://youtu.be/fCC1IBQNSBU)
+- **Development Blog:** [From Forgotten Code to a Digital Graveyard: Building GRAVEREPO with Kiro](https://graverepo.wordpress.com/2026/11/26/from-forgotten-code-to-a-digital-graveyard-building-graverepo-with-kiro/)
+- **GitHub Repository:** https://github.com/ncptunex/Kioween-2026-GRAVEREPO
+
+## Screenshots
+
+### Graveyard Dashboard
+![GRAVEREPO Graveyard Dashboard](<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/166ea992-1546-4ada-ac40-a95e668175ee" />)
+![GRAVEREPO Graveyard Dashboard](<img width="1917" height="1136" alt="Screenshot 2026-11-26 132310" src="https://github.com/user-attachments/assets/964bd5f9-c50c-4e92-9c8a-1748b85bc3ff" />)
+![GRAVEREPO Graveyard Dashboard](<img width="1916" height="1123" alt="Screenshot 2026-11-26 132333" src="https://github.com/user-attachments/assets/c2ccad15-22e8-4b2e-8fca-7757a62b2aa8" />)
+
+### Necropsy
+![GRAVEREPO Necropsy](<img width="1911" height="1132" alt="Screenshot 2026-11-26 132424" src="https://github.com/user-attachments/assets/82ca6a26-a18b-4468-aad9-4bbc179d59c4" />)
+![GRAVEREPO Necropsy](<img width="1836" height="772" alt="Screenshot 2026-11-26 132436" src="https://github.com/user-attachments/assets/4149fee5-6e1e-4aac-a0df-4c713513f4ea" />)
+
+### Resurrection Plan
+![GRAVEREPO Resurrection Plan](<img width="1912" height="935" alt="Screenshot 2026-11-26 132446" src="https://github.com/user-attachments/assets/9b345f36-ad34-4515-92a9-f7971c4b6458" />)
+
+### Rising
+![GRAVEREPO Rising](<img width="1915" height="1132" alt="Screenshot 2026-11-26 132505" src="https://github.com/user-attachments/assets/1dfe8803-be30-4ccb-9b85-f379a174ceaf" />)
+
+### The Living
+![GRAVEREPO The Living](<img width="1907" height="1126" alt="Screenshot 2026-11-26 132517" src="https://github.com/user-attachments/assets/8bbe114b-681a-477a-abd0-915ade14edb8" />)
+![GRAVEREPO The Living](<img width="1911" height="1040" alt="Screenshot 2026-11-26 132533" src="https://github.com/user-attachments/assets/e4ad8e57-54f7-4bc7-93e6-41bc70d40b63" />)
+
 
 ## Features
 
