@@ -1,4 +1,4 @@
-<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/9fb8f519-03d5-44fc-9122-6699a158d94e" /># GRAVEREPO
+<img width="1911" height="1040" alt="Screenshot 2026-11-26 132533" src="https://github.com/user-attachments/assets/b8a7c54d-500b-489e-94a0-d1412f944922" /><img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/9fb8f519-03d5-44fc-9122-6699a158d94e" /># GRAVEREPO
 
 **Dig up your forgotten code.**
 
@@ -16,23 +16,25 @@ Inactivity is a signal, not proof. A quiet repository may be finished, stable, p
 ## Screenshots
 
 ### Graveyard Dashboard
-![GRAVEREPO Graveyard Dashboard](<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/166ea992-1546-4ada-ac40-a95e668175ee" />)
-![GRAVEREPO Graveyard Dashboard](<img width="1917" height="1136" alt="Screenshot 2026-11-26 132310" src="https://github.com/user-attachments/assets/964bd5f9-c50c-4e92-9c8a-1748b85bc3ff" />)
-![GRAVEREPO Graveyard Dashboard](<img width="1916" height="1123" alt="Screenshot 2026-11-26 132333" src="https://github.com/user-attachments/assets/c2ccad15-22e8-4b2e-8fca-7757a62b2aa8" />)
+<img width="1912" height="1135" alt="Screenshot 2026-11-26 143014" src="https://github.com/user-attachments/assets/c492c272-2436-4d9c-9425-e6da0e8a2108" />
+<img width="1917" height="1136" alt="Screenshot 2026-11-26 132310" src="https://github.com/user-attachments/assets/964c2fe9-2fe4-4c2b-b156-7685097e7c5e" />
+<img width="1916" height="1123" alt="Screenshot 2026-11-26 132333" src="https://github.com/user-attachments/assets/2245b7a1-2fa6-4062-b084-9dfac8afe921" />
 
 ### Necropsy
-![GRAVEREPO Necropsy](<img width="1911" height="1132" alt="Screenshot 2026-11-26 132424" src="https://github.com/user-attachments/assets/82ca6a26-a18b-4468-aad9-4bbc179d59c4" />)
-![GRAVEREPO Necropsy](<img width="1836" height="772" alt="Screenshot 2026-11-26 132436" src="https://github.com/user-attachments/assets/4149fee5-6e1e-4aac-a0df-4c713513f4ea" />)
+<img width="1911" height="1132" alt="Screenshot 2026-11-26 132424" src="https://github.com/user-attachments/assets/92dacd56-f48a-44b6-b4e4-6f4e79df1000" />
+<img width="1836" height="772" alt="Screenshot 2026-11-26 132436" src="https://github.com/user-attachments/assets/13aadd73-7162-4165-872b-75410c551bbf" />
 
 ### Resurrection Plan
-![GRAVEREPO Resurrection Plan](<img width="1912" height="935" alt="Screenshot 2026-11-26 132446" src="https://github.com/user-attachments/assets/9b345f36-ad34-4515-92a9-f7971c4b6458" />)
+<img width="1912" height="935" alt="Screenshot 2026-11-26 132446" src="https://github.com/user-attachments/assets/5d458780-e1a8-4fe8-813d-e43108303ef4" />
 
 ### Rising
-![GRAVEREPO Rising](<img width="1915" height="1132" alt="Screenshot 2026-11-26 132505" src="https://github.com/user-attachments/assets/1dfe8803-be30-4ccb-9b85-f379a174ceaf" />)
+<img width="1915" height="1132" alt="Screenshot 2026-11-26 132505" src="https://github.com/user-attachments/assets/e4cf96c0-ad6f-4572-87a0-bca977d94039" />
+
 
 ### The Living
-![GRAVEREPO The Living](<img width="1907" height="1126" alt="Screenshot 2026-11-26 132517" src="https://github.com/user-attachments/assets/8bbe114b-681a-477a-abd0-915ade14edb8" />)
-![GRAVEREPO The Living](<img width="1911" height="1040" alt="Screenshot 2026-11-26 132533" src="https://github.com/user-attachments/assets/e4ad8e57-54f7-4bc7-93e6-41bc70d40b63" />)
+<img width="1907" height="1126" alt="Screenshot 2026-11-26 132517" src="https://github.com/user-attachments/assets/39dfa52c-bee6-428b-85e1-98e53267e8b7" />
+<img width="1911" height="1040" alt="Screenshot 2026-11-26 132533" src="https://github.com/user-attachments/assets/15a598d1-643f-4f67-814d-ecf21ec41168" />
+
 
 
 ## Features
